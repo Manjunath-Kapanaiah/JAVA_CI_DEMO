@@ -5,24 +5,27 @@
 
   <groupId>com.github.manjunathkapanaiah</groupId>
   <artifactId>jenkins-ci-demo</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
 
   <name>Jenkins CI Demo</name>
-  <description>Demo Java project for Jenkins CI</description>
-  <url>https://github.com/Manjunath-Kapanaiah/Jenkins_CI_DEMO</url>
+  <description>Demo Java project for Jenkins CI/CD pipeline</description>
+  <url>https://github.com/Manjunath-Kapanaiah/JAVA_CI_DEMO</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <junit.jupiter.version>5.9.3</junit.jupiter.version>
+    <maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+    <maven.surefire.plugin.version>3.0.0</maven.surefire.plugin.version>
+    <maven.jar.plugin.version>3.3.0</maven.jar.plugin.version>
   </properties>
 
   <scm>
-    <url>https://github.com/Manjunath-Kapanaiah/Jenkins_CI_DEMO.git</url>
-    <connection>scm:git:git://github.com/Manjunath-Kapanaiah/Jenkins_CI_DEMO.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/Manjunath-Kapanaiah/Jenkins_CI_DEMO.git</developerConnection>
+    <url>https://github.com/Manjunath-Kapanaiah/JAVA_CI_DEMO.git</url>
+    <connection>scm:git:git://github.com/Manjunath-Kapanaiah/JAVA_CI_DEMO.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/Manjunath-Kapanaiah/JAVA_CI_DEMO.git</developerConnection>
   </scm>
 
   <dependencies>
@@ -43,26 +46,48 @@
 
   <build>
     <plugins>
-      <!-- Compiler plugin -->
+      <!-- Maven Compiler Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.10.1</version>
+        <version>${maven.compiler.plugin.version}</version>
         <configuration>
           <release>${maven.compiler.target}</release>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
         </configuration>
       </plugin>
 
-      <!-- Surefire plugin (JUnit 5) -->
+      <!-- Maven Surefire Plugin (for JUnit 5) -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>${maven.surefire.plugin.version}</version>
         <configuration>
           <useModulePath>false</useModulePath>
         </configuration>
       </plugin>
 
+      <!-- Maven JAR Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>${maven.jar.plugin.version}</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>App</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <!-- Maven Clean Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.2.0</version>
+      </plugin>
     </plugins>
   </build>
 
