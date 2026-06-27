@@ -5,7 +5,6 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checking out source code...'
-                git 'https://github.com/Manjunath-Kapanaiah/JAVA_CI_DEMO.git'
                 checkout scm
             }
         }
